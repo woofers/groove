@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CBBundleDisplayName</key>
+	<string>Groove</string>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Need to get some cool music</string>
 	<key>kTCCServiceMediaLibrary</key>
@@ -17,6 +19,8 @@
 	<key>NSSupportsSuddenTermination</key>
 	<false/>
 	<key>LSUIElement</key>
-	<true/>
+	<false/>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Demonstrates how to control an “AppleScriptable” application from Swift via AppleScript-ObjC. </string>
 </dict>
 </plist>
