@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Need to get some cool music</string>
+	<key>kTCCServiceMediaLibrary</key>
+	<string>Orbital needs access to open pinned dock items from that folder.</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>11</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>© Jaxson Van Doorn 2022. All Rights Reserved.</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.productivity</string>
+	<key>NSSupportsAutomaticTermination</key>
+	<false/>
+	<key>NSSupportsSuddenTermination</key>
+	<false/>
+	<key>LSUIElement</key>
+	<true/>
+</dict>
+</plist>
