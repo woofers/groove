@@ -1,12 +1,18 @@
 import SwiftUI
 
-class DockData: ObservableObject {
+class DockData: ObservableObject, Identifiable {
   @Published var artist: String
   @Published var album: String
   @Published var song: String
   @Published var artwork: NSImage?
   @Published var playing: Bool
 
+  public var id: String {
+    get {
+      "[\(song) - \(artist) - \(album) | \(playing ? "Playing" : "Paused") \(artwork)]"
+    }
+  }
+  
   init(artist: String, album: String, song: String, artwork: NSImage? = nil, playing: Bool) {
     self.artist = artist
     self.album = album

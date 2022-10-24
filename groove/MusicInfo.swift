@@ -1,8 +1,7 @@
 import SwiftUI
+import AppleScriptObjC
 
 class MusicInfo {
-  
-  //static let `default` = MusicInfo()
   
   private var data = DockData(artist: "", album: "", song: "", artwork: nil, playing: false)
 

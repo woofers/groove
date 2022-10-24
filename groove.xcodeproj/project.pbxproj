@@ -13,6 +13,7 @@
 		A6B2DFB429071D450010E7AF /* DockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFB329071D450010E7AF /* DockData.swift */; };
 		A6B2DFB629071D660010E7AF /* DockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFB529071D660010E7AF /* DockViewController.swift */; };
 		A6B2DFB829071D970010E7AF /* DockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFB729071D970010E7AF /* DockController.swift */; };
+		A6B2DFBA29071FAE0010E7AF /* OptionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFB929071FAE0010E7AF /* OptionalView.swift */; };
 		A6F9C9D1290318BF0097514A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C9D0290318BF0097514A /* AppDelegate.swift */; };
 		A6F9C9D5290318C00097514A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F9C9D4290318C00097514A /* Assets.xcassets */; };
 		A6F9C9D8290318C00097514A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F9C9D7290318C00097514A /* Preview Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		A6B2DFB329071D450010E7AF /* DockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockData.swift; sourceTree = "<group>"; };
 		A6B2DFB529071D660010E7AF /* DockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockViewController.swift; sourceTree = "<group>"; };
 		A6B2DFB729071D970010E7AF /* DockController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockController.swift; sourceTree = "<group>"; };
+		A6B2DFB929071FAE0010E7AF /* OptionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalView.swift; sourceTree = "<group>"; };
 		A6F9C9CD290318BF0097514A /* groove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = groove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F9C9D0290318BF0097514A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6F9C9D4290318C00097514A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				A6F9C9E129031B520097514A /* Info.plist */,
 				A6B2DFAD2906FFE40010E7AF /* main.swift */,
 				A6F9C9D0290318BF0097514A /* AppDelegate.swift */,
+				A6B2DFB929071FAE0010E7AF /* OptionalView.swift */,
 				A6B2DFB729071D970010E7AF /* DockController.swift */,
 				A6B2DFB529071D660010E7AF /* DockViewController.swift */,
 				A6B2DFB329071D450010E7AF /* DockData.swift */,
@@ -192,6 +195,7 @@
 				A6B2DFB829071D970010E7AF /* DockController.swift in Sources */,
 				A6B2DFB429071D450010E7AF /* DockData.swift in Sources */,
 				A6B2DFB0290711F60010E7AF /* MusicInfo.swift in Sources */,
+				A6B2DFBA29071FAE0010E7AF /* OptionalView.swift in Sources */,
 				A6F9C9EB290341890097514A /* iTunesBridge.applescript in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
