@@ -9,7 +9,7 @@ class DockData: ObservableObject, Identifiable {
 
   public var id: String {
     get {
-      "[\(song) - \(artist) - \(album) | \(playing ? "Playing" : "Paused") \(artwork)]"
+      "[\(song) - \(artist) - \(album) | \(playing ? "Playing" : "Paused") \(artwork.hashValue)]"
     }
   }
   
@@ -17,8 +17,8 @@ class DockData: ObservableObject, Identifiable {
     self.artist = artist
     self.album = album
     self.song = song
-    self.artwork = artwork
     self.playing = playing
+    self.artwork = artwork
   }
 
   func update(other: DockData) {
