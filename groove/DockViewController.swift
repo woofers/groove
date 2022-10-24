@@ -14,7 +14,6 @@ class DockViewController: NSViewController {
   }
 
   func update(_ dockData: DockData?) {
-    if let data = dockData { print(data.id) }
     guard self.dockData == nil else { return }
     self.dockData = dockData
   }

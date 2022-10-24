@@ -43,6 +43,13 @@ class MusicInfo {
     bridge?.playPause()
   }
   
+  func nextTrack() {
+    bridge?.gotoNextTrack()
+    if !getPlaybackStatus() {
+      bridge?.playPause()
+    }
+  }
+  
   func fetch() -> DockData {
     getTrackInfo()
     let newData = DockData(artist: getArtist(), album: getAlbum(), song: getSong(), artwork: getArtwork(), playing: getPlaybackStatus())
