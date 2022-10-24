@@ -1,8 +1,3 @@
-//
-//  Support.swift
-//  Swift-AppleScriptObjC
-//
-
 import Cocoa
 import MediaPlayer
 
