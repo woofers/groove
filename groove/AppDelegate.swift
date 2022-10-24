@@ -3,6 +3,19 @@ import DSFDockTile
 import MediaPlayer
 import SwiftUI
 
+struct OptionalView<Value, T: View>: View {
+  let content: T
+
+  init?(_ value: Value?, @ViewBuilder content: (Value) -> T) {
+    guard let value = value else { return nil }
+    self.content = content(value)
+  }
+
+  var body: some View {
+    content
+  }
+}
+
 class DockData: ObservableObject {
   @Published var artist: String
   @Published var album: String
@@ -42,12 +55,14 @@ struct DockImage: View {
   var body: some View {
     VStack {
       ZStack {
-        Image(nsImage: data.artwork!)
-          .interpolation(.high)
-          .antialiased(true)
-          .resizable()
-          .cornerRadius(16)
-          .shadow(color: .black.opacity(0.36), radius: 1, x: 1, y: 2)
+        OptionalView(data.artwork) { artwork in
+          Image(nsImage: artwork)
+            .interpolation(.high)
+            .antialiased(true)
+            .resizable()
+            .cornerRadius(16)
+            .shadow(color: .black.opacity(0.36), radius: 1, x: 1, y: 2)
+        }
         RoundedRectangle(cornerRadius: 16)
           .fill(.black)
           .opacity(0.3)
@@ -81,67 +96,41 @@ class DockViewController: NSViewController {
     }
   }
 
-  func update(_ dockData: DockData) {
+  func update(_ dockData: DockData?) {
+    guard self.dockData == nil else { return }
     self.dockData = dockData
   }
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-  var iTunesBridge: iTunesBridge?
   var dockViewController = DockViewController()
-  var data = DockData(artist: "", album: "", song: "", artwork: nil, playing: false)
+  var info: MusicInfo?
 
   lazy var updateDockTile: DSFDockTile.View = {
     dockViewController.loadView()
     return DSFDockTile.View(dockViewController)
   }()
 
-  func loadApplescript() async -> iTunesBridge {
-    Bundle.main.loadAppleScriptObjectiveCScripts()
-    let iTunesBridgeClass: AnyClass = NSClassFromString("iTunesBridge")!
-    let iTunesBridge = iTunesBridgeClass.alloc() as! iTunesBridge
-    return iTunesBridge
-  }
-
-  func getDockData() -> DockData? {
-    guard let bridge = iTunesBridge else { return nil }
-    if let song = bridge.trackInfo {
-      let artist = song["trackArtist"] as! String
-      let album = song["trackAlbum"] as! String
-      let name = song["trackName"] as! String
-      let playing = bridge.playerState == .playing
-      let artwork = bridge.artwork
-      return DockData(artist: artist, album: album, song: name, artwork: artwork, playing: playing)
-    }
-    return nil
-  }
-
   func updateTile() {
-    if let newData = getDockData() {
-      self.data.update(other: newData)
-      self.dockViewController.update(self.data)
-      self.updateDockTile.display()
-    }
+    self.dockViewController.update(info?.fetch())
+    self.updateDockTile.display()
   }
 
   func applicationDidBecomeActive(_: Notification) {
-    // print("active")
-    // iTunesBridge?.playPause()
+
   }
 
   func applicationShouldHandleReopen(_: NSApplication, hasVisibleWindows _: Bool) -> Bool {
-    print("reopen")
-    self.iTunesBridge?.playPause()
+    self.info?.playPause()
     self.updateTile()
-
     return true
   }
 
   func applicationDidFinishLaunching(_: Notification) {
-    Task { [weak self] in
+    Task {
       do {
-        self?.iTunesBridge = await self?.loadApplescript()
-        self?.updateTile()
+        self.info = await MusicInfo()
+        self.updateTile()
       }
     }
   }
