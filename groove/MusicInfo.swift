@@ -10,15 +10,11 @@ class MusicInfo {
   
   private var data = DockData(artist: "", album: "", song: "", artwork: nil, playing: false)
 
-  private var ready = false
   private var didFetch = false
-  
-  private var trackInfo: [NSString : AnyObject] = [:]
-  private var bridge: iTunesBridge?
  
-  init() async {
+  init() {
     self.player = MusicPlayers.Scriptable(name: .appleMusic)
-    await setup()
+    getTrackInfo()
   }
   
   private func unwrapAsString(_ value: AnyObject?) -> String {
@@ -78,24 +74,7 @@ class MusicInfo {
     didFetch = true
     return self.data
   }
-  
-  private func setup() async {
-    let task = Task { [weak self] in
-      do {
-        self?.bridge = await self?.loadApplescript()
-        self?.ready = true
-      }
-    }
-    _ = await task.result
-  }
-  
-  private func loadApplescript() async -> iTunesBridge {
-    Bundle.main.loadAppleScriptObjectiveCScripts()
-    let iTunesBridgeClass: AnyClass = NSClassFromString("iTunesBridge")!
-    let bridge = iTunesBridgeClass.alloc() as! iTunesBridge
-    return bridge
-  }
-  
+
   private func getTrackInfo() {
     ArtworkLoader.default.fetchArtwork()
   }

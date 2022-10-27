@@ -51,13 +51,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   func applicationDidFinishLaunching(_: Notification) {
-    Task {
-      do {
-        self.info = await MusicInfo()
-        DispatchQueue.main.async {
-          self.updateTile()
-        }
-      }
+    self.info = MusicInfo()
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+      self.updateTile()
     }
   }
 
