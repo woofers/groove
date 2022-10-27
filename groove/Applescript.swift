@@ -2,17 +2,17 @@ import Foundation
 import SwiftUI
 
 extension NSAppleScript {
-  static var itunesMusicName: String {
+  static var appleMusicName: String {
     if #available(OSX 10.15, *) {
       return "com.apple.Music"
     } else {
       return "iTunes"
     }
   }
-    
-  static func itunesArtwork() -> String {
+
+  static func loadAppleMusicArtwork() -> String {
     return """
-    tell application id "\(itunesMusicName)"
+    tell application id "\(appleMusicName)"
       try
         if player state is not stopped then
             set alb to (get album of current track)
@@ -34,8 +34,8 @@ extension NSAppleScript {
     end tell
     """
   }
-  
-  static func loadSpotifyAlbumArtwork() -> String {
+
+  static func loadSpotifyArtwork() -> String {
     return """
     if application "Spotify" is running then
         tell application "Spotify"

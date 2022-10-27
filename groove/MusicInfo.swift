@@ -7,8 +7,6 @@ class MusicInfo {
   private var data: DockData
   private var loader: ArtworkLoader
   private var didFetch = false
-  private var playing = false
-  private var hasPlayingStatus = false
   
   enum Action {
     case skip, playPause, none
@@ -33,13 +31,6 @@ class MusicInfo {
     self.data = DockData(artist: "", album: "", song: "", artwork: nil, playing: false)
     self.player = MusicPlayers.Scriptable(name: player.getInternalPlayer())
     self.loader = ArtworkLoader(player: player)
-  }
-  
-  private func unwrapAsString(_ value: AnyObject?) -> String {
-    if let casted = value as? String {
-      return casted
-    }
-    return ""
   }
   
   static func getPlayer() -> PlayerApp {
@@ -96,11 +87,11 @@ class MusicInfo {
   func perform(_ action: Action) async {
     if action == .playPause {
       playPause()
-      try? await Task.sleep(nanoseconds: 50_000_000)
+      await delay(0.05)
     } else if action == .skip {
       nextTrack()
       // Acount for time for Spotify/Apple Music to update
-      try? await Task.sleep(nanoseconds: 100_000_000)
+      await delay(0.1)
     }
   }
   
@@ -117,15 +108,16 @@ class MusicInfo {
     return data
   }
 
+  private func delay(_ delay: TimeInterval) async {
+    let nano = UInt64(delay * 1_000_000_000)
+    try? await Task.sleep(nanoseconds: nano)
+  }
+  
   private func getTrackInfo() async {
     do {
       try await self.loader.getArtworkAsync()
     } catch {
       print(error)
-    }
-    if !hasPlayingStatus {
-      playing = internalPlaybackStatus()
-      hasPlayingStatus = true
     }
   }
   

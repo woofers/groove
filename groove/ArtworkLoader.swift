@@ -24,25 +24,14 @@ class ArtworkLoader {
     return self.artwork
   }
   
-  func fetchArtwork() {
-   Task {
-      do {
-        try await getArtworkAsync()
-      } catch {
-        print(error)
-      }
-    }
-  }
-  
+ 
   @discardableResult
   func getArtworkAsync() async throws -> NSImage {
     let data: NSImage = try await withCheckedThrowingContinuation { continuation in
       fetchArtwork { result in
-        print(result)
         switch result {
         case .success(let image):
           continuation.resume(returning: image)
-          print("ahh")
           return
         case .failure(let error):
           continuation.resume(throwing: error)
@@ -55,7 +44,7 @@ class ArtworkLoader {
   }
   
   private func fetchArtworkFromSpotify(completion: @escaping (Result<NSImage, Error>) -> Void) {
-    let code = NSAppleScript.loadSpotifyAlbumArtwork()
+    let code = NSAppleScript.loadSpotifyArtwork()
     var error: NSDictionary?
     let script = NSAppleScript(source: code)
     let output = script?.executeAndReturnError(&error)
@@ -81,12 +70,10 @@ class ArtworkLoader {
   }
   
   private func fetchArtworkFromAppleMusic(completion: @escaping (Result<NSImage, Error>) -> Void) {
-    let code = NSAppleScript.itunesArtwork()
+    let code = NSAppleScript.loadAppleMusicArtwork()
     var error: NSDictionary?
     let script = NSAppleScript(source: code)
-
     if let output = script?.executeAndReturnError(&error) {
-
       if let image = NSImage(data: output.data) {
         completion(.success(image))
         return
