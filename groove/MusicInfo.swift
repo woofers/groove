@@ -2,19 +2,15 @@ import SwiftUI
 import AppleScriptObjC
 import MusicPlayer
 
-//public typealias Image = NSImage
-
 class MusicInfo {
   
   private var player: MusicPlayers.Scriptable?
-  
-  private var data = DockData(artist: "", album: "", song: "", artwork: nil, playing: false)
-
+  private var data: DockData
   private var didFetch = false
  
-  init() {
+  nonisolated init() {
     self.player = MusicPlayers.Scriptable(name: .appleMusic)
-    getTrackInfo()
+    self.data = DockData(artist: "", album: "", song: "", artwork: nil, playing: false)
   }
   
   private func unwrapAsString(_ value: AnyObject?) -> String {
@@ -67,16 +63,26 @@ class MusicInfo {
     }
   }
   
-  func fetch() -> DockData {
-    getTrackInfo()
-    let newData = DockData(artist: getArtist(), album: getAlbum(), song: getSong(), artwork: getArtwork(), playing: getPlaybackStatus())
-    self.data.update(other: newData)
-    didFetch = true
+  func fetch() async -> DockData {
+    let task = Task {
+      do {
+        await getTrackInfo()
+        let newData = DockData(artist: getArtist(), album: getAlbum(), song: getSong(), artwork: getArtwork(), playing: getPlaybackStatus())
+        await self.data.update(other: newData)
+        didFetch = true
+      }
+    }
+    _ = await task.result
     return self.data
   }
 
-  private func getTrackInfo() {
-    ArtworkLoader.default.fetchArtwork()
+  private func getTrackInfo() async {
+    do {
+      let loader = ArtworkLoader.default
+      try await loader.getArtworkAsync()
+    } catch {
+      print(error)
+    }
   }
 }
 

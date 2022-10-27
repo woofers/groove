@@ -1,8 +1,7 @@
-import SwiftUI
 import DSFDockTile
+import SwiftUI
 
 class DockController {
-
   var dockViewController = DockViewController()
   var info: MusicInfo?
 
@@ -10,23 +9,21 @@ class DockController {
     dockViewController.loadView()
     return DSFDockTile.View(dockViewController)
   }()
-  
+
   init() {
-    Task {
-      do {
-        self.info = await MusicInfo()
-        self.updateTile()
-      }
-    }
+    self.info = MusicInfo()
+    self.updateTile()
   }
-  
+
   func updateTile() {
-    self.dockViewController.update(info?.fetch())
+    /*
+    self.dockViewController.update(self.info?.fetch())
     DispatchQueue.main.async { [weak self] in
       self?.updateDockTile.display()
     }
+     */
   }
-  
+
   func click() {
     self.info?.playPause()
     self.updateTile()

@@ -24,15 +24,16 @@ class ArtworkLoader {
   }
   
   func fetchArtwork() {
-   Task { [weak self] in
+   Task {
       do {
-        self?.artwork = try await getArtworkAsync()
+        try await getArtworkAsync()
       } catch {
         print(error)
       }
     }
   }
   
+  @discardableResult
   func getArtworkAsync() async throws -> NSImage {
     let data: NSImage = try await withCheckedThrowingContinuation { continuation in
       fetchArtworkFromAppleMusic { result in
@@ -46,6 +47,7 @@ class ArtworkLoader {
         }
       }
     }
+    self.artwork = data
     return data
   }
   

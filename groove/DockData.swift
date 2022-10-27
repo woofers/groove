@@ -21,7 +21,7 @@ class DockData: ObservableObject, Identifiable {
     self.artwork = artwork
   }
 
-  func update(other: DockData) {
+  @MainActor func update(other: DockData) {
     self.artist = other.artist
     self.album = other.album
     self.song = other.song

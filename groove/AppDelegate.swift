@@ -21,8 +21,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }()
 
   func updateTile() {
-    self.dockViewController.update(info?.fetch())
-    self.updateDockTile.display()
+    Task { [weak self] in
+      let data = await info?.fetch()
+      await self?.dockViewController.update(data)
+      DispatchQueue.main.async { [weak self] in
+        self?.updateDockTile.display()
+      }
+    }
   }
 
   func applicationDidBecomeActive(_: Notification) {
@@ -44,17 +49,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       print("Type: \(self.lastClickType) Delta: \(clickTime)")
       self.lastClicked = now
     }
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-      self.updateTile()
-    }
+    self.updateTile()
     return true
   }
 
   func applicationDidFinishLaunching(_: Notification) {
     self.info = MusicInfo()
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-      self.updateTile()
-    }
+    self.updateTile()
   }
 
   func applicationWillTerminate(_: Notification) {}
