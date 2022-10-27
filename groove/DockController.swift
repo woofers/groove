@@ -11,7 +11,7 @@ class DockController {
   }()
 
   init() {
-    self.info = MusicInfo()
+    self.info = MusicInfo(self.updateTile)
     self.updateTile()
   }
 

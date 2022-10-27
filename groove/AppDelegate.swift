@@ -22,8 +22,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }()
 
   func updateTile() {
+    let data = self.info?.getData()
     Task { [weak self] in
-      let data = await info?.fetch()
       await self?.dockViewController.update(data)
       DispatchQueue.main.async { [weak self] in
         self?.updateDockTile.display()
@@ -47,23 +47,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         action = .playPause
         self.lastClickType = .normal
       }
-      print("Type: \(self.lastClickType) Delta: \(clickTime)")
       self.lastClicked = now
     }
-    
-    Task { [weak self] in
-      do {
-        let action = self?.action ?? .none
-        await self?.info?.perform(action)
-        self?.updateTile()
-      }
-    }
+    self.info?.perform(self.action)
     return true
   }
 
   func applicationDidFinishLaunching(_: Notification) {
-    self.info = MusicInfo()
-    self.updateTile()
+    self.info = MusicInfo(self.updateTile)
   }
 
   func applicationWillTerminate(_: Notification) {}
