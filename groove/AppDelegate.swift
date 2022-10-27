@@ -52,7 +52,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     Task {
       do {
         self.info = await MusicInfo()
-        self.updateTile()
+        DispatchQueue.main.async {
+          self.updateTile()
+        }
       }
     }
   }

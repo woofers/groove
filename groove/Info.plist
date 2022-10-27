@@ -2,10 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CBBundleDisplayName</key>
-	<string>Groove</string>
+	<key>CFBundleDisplayName</key>
+	<string>${PRODUCT_NAME}</string>
+	<key>CFBundleName</key>
+	<string>${PRODUCT_NAME}</string>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Need to get some cool music</string>
+	<key>LSHasLocalizedDisplayName</key>
+	<true/>
 	<key>kTCCServiceMediaLibrary</key>
 	<string>Orbital needs access to open pinned dock items from that folder.</string>
 	<key>LSMinimumSystemVersion</key>

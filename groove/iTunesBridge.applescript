@@ -40,7 +40,6 @@ script iTunesBridge
                 end if
             end tell
             set rawData to (get raw data of artwork 1 of current track)
-            set the_record to {data:rawData, format:imgFormat}
             return rawData
         else
             return

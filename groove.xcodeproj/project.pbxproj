@@ -14,6 +14,9 @@
 		A6B2DFB629071D660010E7AF /* DockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFB529071D660010E7AF /* DockViewController.swift */; };
 		A6B2DFB829071D970010E7AF /* DockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFB729071D970010E7AF /* DockController.swift */; };
 		A6B2DFBA29071FAE0010E7AF /* OptionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFB929071FAE0010E7AF /* OptionalView.swift */; };
+		A6B2DFBE290734890010E7AF /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFBD290734880010E7AF /* FileManager.swift */; };
+		A6B2DFC1290738080010E7AF /* AnyCodable in Frameworks */ = {isa = PBXBuildFile; productRef = A6B2DFC0290738080010E7AF /* AnyCodable */; };
+		A6B2DFC429073E000010E7AF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6B2DFC629073E000010E7AF /* InfoPlist.strings */; };
 		A6F9C9D1290318BF0097514A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C9D0290318BF0097514A /* AppDelegate.swift */; };
 		A6F9C9D5290318C00097514A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F9C9D4290318C00097514A /* Assets.xcassets */; };
 		A6F9C9D8290318C00097514A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F9C9D7290318C00097514A /* Preview Assets.xcassets */; };
@@ -32,6 +35,9 @@
 		A6B2DFB529071D660010E7AF /* DockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockViewController.swift; sourceTree = "<group>"; };
 		A6B2DFB729071D970010E7AF /* DockController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockController.swift; sourceTree = "<group>"; };
 		A6B2DFB929071FAE0010E7AF /* OptionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalView.swift; sourceTree = "<group>"; };
+		A6B2DFBD290734880010E7AF /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		A6B2DFC529073E000010E7AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A6B2DFC729073E3E0010E7AF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A6F9C9CD290318BF0097514A /* groove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = groove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F9C9D0290318BF0097514A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6F9C9D4290318C00097514A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +55,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6F9C9E5290341410097514A /* AppleScriptObjC.framework in Frameworks */,
+				A6B2DFC1290738080010E7AF /* AnyCodable in Frameworks */,
 				A6F9C9EE290354260097514A /* DSFDockTile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				A6F9C9CF290318BF0097514A /* groove */,
-				A6F9C9CE290318BF0097514A /* Products */,
 				A6F9C9E3290341410097514A /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -71,13 +77,16 @@
 				A6F9C9CD290318BF0097514A /* groove.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		A6F9C9CF290318BF0097514A /* groove */ = {
 			isa = PBXGroup;
 			children = (
 				A6F9C9E129031B520097514A /* Info.plist */,
+				A6B2DFC629073E000010E7AF /* InfoPlist.strings */,
 				A6B2DFAD2906FFE40010E7AF /* main.swift */,
+				A6B2DFBD290734880010E7AF /* FileManager.swift */,
 				A6F9C9D0290318BF0097514A /* AppDelegate.swift */,
 				A6B2DFB929071FAE0010E7AF /* OptionalView.swift */,
 				A6B2DFB729071D970010E7AF /* DockController.swift */,
@@ -88,6 +97,7 @@
 				A6F9C9E62903415D0097514A /* iTunesBridge.swift */,
 				A6F9C9EA290341890097514A /* iTunesBridge.applescript */,
 				A6F9C9D4290318C00097514A /* Assets.xcassets */,
+				A6F9C9CE290318BF0097514A /* Products */,
 				A6F9C9D9290318C00097514A /* groove.entitlements */,
 				A6F9C9D6290318C00097514A /* Preview Content */,
 			);
@@ -128,6 +138,7 @@
 			name = groove;
 			packageProductDependencies = (
 				A6F9C9ED290354260097514A /* DSFDockTile */,
+				A6B2DFC0290738080010E7AF /* AnyCodable */,
 			);
 			productName = groove;
 			productReference = A6F9C9CD290318BF0097514A /* groove.app */;
@@ -155,10 +166,12 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = A6F9C9C4290318BF0097514A;
 			packageReferences = (
 				A6F9C9EC290354260097514A /* XCRemoteSwiftPackageReference "DSFDockTile" */,
+				A6B2DFBF290738080010E7AF /* XCRemoteSwiftPackageReference "AnyCodable" */,
 			);
 			productRefGroup = A6F9C9CE290318BF0097514A /* Products */;
 			projectDirPath = "";
@@ -175,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6F9C9D8290318C00097514A /* Preview Assets.xcassets in Resources */,
+				A6B2DFC429073E000010E7AF /* InfoPlist.strings in Resources */,
 				A6F9C9D5290318C00097514A /* Assets.xcassets in Resources */,
 				A6F9C9E229031B520097514A /* Info.plist in Resources */,
 			);
@@ -189,6 +203,7 @@
 			files = (
 				A6B2DFB229071D2B0010E7AF /* DockImage.swift in Sources */,
 				A6B2DFAE2906FFE40010E7AF /* main.swift in Sources */,
+				A6B2DFBE290734890010E7AF /* FileManager.swift in Sources */,
 				A6F9C9D1290318BF0097514A /* AppDelegate.swift in Sources */,
 				A6B2DFB629071D660010E7AF /* DockViewController.swift in Sources */,
 				A6F9C9E72903415D0097514A /* iTunesBridge.swift in Sources */,
@@ -202,11 +217,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		A6B2DFC629073E000010E7AF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A6B2DFC529073E000010E7AF /* en */,
+				A6B2DFC729073E3E0010E7AF /* fr */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		A6F9C9DA290318C00097514A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -267,6 +295,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -401,6 +430,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A6B2DFBF290738080010E7AF /* XCRemoteSwiftPackageReference "AnyCodable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Flight-School/AnyCodable.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.7;
+			};
+		};
 		A6F9C9EC290354260097514A /* XCRemoteSwiftPackageReference "DSFDockTile" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dagronf/DSFDockTile";
@@ -412,6 +449,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A6B2DFC0290738080010E7AF /* AnyCodable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A6B2DFBF290738080010E7AF /* XCRemoteSwiftPackageReference "AnyCodable" */;
+			productName = AnyCodable;
+		};
 		A6F9C9ED290354260097514A /* DSFDockTile */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A6F9C9EC290354260097514A /* XCRemoteSwiftPackageReference "DSFDockTile" */;

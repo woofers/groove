@@ -15,16 +15,23 @@ class MusicInfo {
     await setup()
   }
   
+  private func unwrapAsString(_ value: AnyObject?) -> String {
+    if let casted = value as? String {
+      return casted
+    }
+    return ""
+  }
+  
   func getArtist() -> String {
-    return trackInfo["trackArtist"] as! String
+    return unwrapAsString(trackInfo["trackArtist"])
   }
   
   func getAlbum() -> String {
-    return trackInfo["trackAlbum"] as! String
+    return unwrapAsString(trackInfo["trackAlbum"])
   }
   
   func getSong() -> String {
-    return trackInfo["trackName"] as! String
+    return unwrapAsString(trackInfo["trackName"])
   }
   
   func getArtwork() -> NSImage? {
@@ -80,6 +87,7 @@ class MusicInfo {
     if let song = bridge?.trackInfo {
       self.trackInfo = song
     }
+    print(self.trackInfo)
   }
 }
 
