@@ -44,7 +44,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       print("Type: \(self.lastClickType) Delta: \(clickTime)")
       self.lastClicked = now
     }
-    self.updateTile()
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+      self.updateTile()
+    }
     return true
   }
 

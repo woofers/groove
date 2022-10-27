@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6685A46290B14D700D70B02 /* LXMusicPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = A6685A45290B14D700D70B02 /* LXMusicPlayer */; };
+		A6685A48290B14D700D70B02 /* MusicPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = A6685A47290B14D700D70B02 /* MusicPlayer */; };
+		A6685A4C290B2E4F00D70B02 /* Applescript.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6685A4B290B2E4F00D70B02 /* Applescript.swift */; };
+		A6685A4E290B327600D70B02 /* ArtworkLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6685A4D290B327600D70B02 /* ArtworkLoader.swift */; };
 		A6B2DFAE2906FFE40010E7AF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFAD2906FFE40010E7AF /* main.swift */; };
 		A6B2DFB0290711F60010E7AF /* MusicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFAF290711F60010E7AF /* MusicInfo.swift */; };
 		A6B2DFB229071D2B0010E7AF /* DockImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFB129071D2B0010E7AF /* DockImage.swift */; };
@@ -27,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A6685A4B290B2E4F00D70B02 /* Applescript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Applescript.swift; sourceTree = "<group>"; };
+		A6685A4D290B327600D70B02 /* ArtworkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkLoader.swift; sourceTree = "<group>"; };
 		A6B2DFAD2906FFE40010E7AF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A6B2DFAF290711F60010E7AF /* MusicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicInfo.swift; sourceTree = "<group>"; };
 		A6B2DFB129071D2B0010E7AF /* DockImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockImage.swift; sourceTree = "<group>"; };
@@ -55,7 +61,9 @@
 			files = (
 				A6F9C9E5290341410097514A /* AppleScriptObjC.framework in Frameworks */,
 				A6B2DFC1290738080010E7AF /* AnyCodable in Frameworks */,
+				A6685A48290B14D700D70B02 /* MusicPlayer in Frameworks */,
 				A6F9C9EE290354260097514A /* DSFDockTile in Frameworks */,
+				A6685A46290B14D700D70B02 /* LXMusicPlayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +93,8 @@
 				A6F9C9E129031B520097514A /* Info.plist */,
 				A6B2DFC629073E000010E7AF /* InfoPlist.strings */,
 				A6B2DFAD2906FFE40010E7AF /* main.swift */,
+				A6685A4D290B327600D70B02 /* ArtworkLoader.swift */,
+				A6685A4B290B2E4F00D70B02 /* Applescript.swift */,
 				A6B2DFBD290734880010E7AF /* FileManager.swift */,
 				A6F9C9D0290318BF0097514A /* AppDelegate.swift */,
 				A6B2DFB929071FAE0010E7AF /* OptionalView.swift */,
@@ -138,6 +148,8 @@
 			packageProductDependencies = (
 				A6F9C9ED290354260097514A /* DSFDockTile */,
 				A6B2DFC0290738080010E7AF /* AnyCodable */,
+				A6685A45290B14D700D70B02 /* LXMusicPlayer */,
+				A6685A47290B14D700D70B02 /* MusicPlayer */,
 			);
 			productName = groove;
 			productReference = A6F9C9CD290318BF0097514A /* groove.app */;
@@ -171,6 +183,7 @@
 			packageReferences = (
 				A6F9C9EC290354260097514A /* XCRemoteSwiftPackageReference "DSFDockTile" */,
 				A6B2DFBF290738080010E7AF /* XCRemoteSwiftPackageReference "AnyCodable" */,
+				A6685A44290B14D600D70B02 /* XCRemoteSwiftPackageReference "MusicPlayer" */,
 			);
 			productRefGroup = A6F9C9CE290318BF0097514A /* Products */;
 			projectDirPath = "";
@@ -206,6 +219,8 @@
 				A6B2DFB629071D660010E7AF /* DockViewController.swift in Sources */,
 				A6F9C9E72903415D0097514A /* iTunesBridge.swift in Sources */,
 				A6B2DFB829071D970010E7AF /* DockController.swift in Sources */,
+				A6685A4E290B327600D70B02 /* ArtworkLoader.swift in Sources */,
+				A6685A4C290B2E4F00D70B02 /* Applescript.swift in Sources */,
 				A6B2DFB429071D450010E7AF /* DockData.swift in Sources */,
 				A6B2DFB0290711F60010E7AF /* MusicInfo.swift in Sources */,
 				A6B2DFBA29071FAE0010E7AF /* OptionalView.swift in Sources */,
@@ -358,7 +373,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = groove/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Groove;
+				INFOPLIST_KEY_CFBundleDisplayName = "Now Playing";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -369,6 +384,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaxson.groove;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -388,7 +406,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = groove/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Groove;
+				INFOPLIST_KEY_CFBundleDisplayName = "Now Playing";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -399,6 +417,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaxson.groove;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -428,6 +449,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A6685A44290B14D600D70B02 /* XCRemoteSwiftPackageReference "MusicPlayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ddddxxx/MusicPlayer";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		A6B2DFBF290738080010E7AF /* XCRemoteSwiftPackageReference "AnyCodable" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Flight-School/AnyCodable.git";
@@ -447,6 +476,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A6685A45290B14D700D70B02 /* LXMusicPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A6685A44290B14D600D70B02 /* XCRemoteSwiftPackageReference "MusicPlayer" */;
+			productName = LXMusicPlayer;
+		};
+		A6685A47290B14D700D70B02 /* MusicPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A6685A44290B14D600D70B02 /* XCRemoteSwiftPackageReference "MusicPlayer" */;
+			productName = MusicPlayer;
+		};
 		A6B2DFC0290738080010E7AF /* AnyCodable */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A6B2DFBF290738080010E7AF /* XCRemoteSwiftPackageReference "AnyCodable" */;

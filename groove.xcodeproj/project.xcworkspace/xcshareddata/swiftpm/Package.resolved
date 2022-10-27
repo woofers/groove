@@ -10,6 +10,33 @@
       }
     },
     {
+      "identity" : "cxextensions",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cx-org/CXExtensions",
+      "state" : {
+        "revision" : "4790ecd6a6c0e796d776a28a820b552f7e8f6abd",
+        "version" : "0.4.0"
+      }
+    },
+    {
+      "identity" : "cxshim",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cx-org/CXShim",
+      "state" : {
+        "revision" : "82fecc246c7ca9f0ac1656b8199b7956e64d68f3",
+        "version" : "0.4.0"
+      }
+    },
+    {
+      "identity" : "cxtest",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cx-org/CXTest",
+      "state" : {
+        "revision" : "929ce7cbd3005bc9356ae826bb65ee2611379b17",
+        "version" : "0.4.0"
+      }
+    },
+    {
       "identity" : "dsfdocktile",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/dagronf/DSFDockTile",
@@ -25,6 +52,15 @@
       "state" : {
         "revision" : "8b6e1e7f862c1d39ce34c59705f9fa731d9fd539",
         "version" : "1.0.1"
+      }
+    },
+    {
+      "identity" : "musicplayer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ddddxxx/MusicPlayer",
+      "state" : {
+        "branch" : "master",
+        "revision" : "6eee88b4800bba1cc03b2a233fe858ccca7c9862"
       }
     }
   ],

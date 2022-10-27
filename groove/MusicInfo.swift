@@ -1,7 +1,12 @@
 import SwiftUI
 import AppleScriptObjC
+import MusicPlayer
+
+//public typealias Image = NSImage
 
 class MusicInfo {
+  
+  private var player: MusicPlayers.Scriptable?
   
   private var data = DockData(artist: "", album: "", song: "", artwork: nil, playing: false)
 
@@ -12,6 +17,7 @@ class MusicInfo {
   private var bridge: iTunesBridge?
  
   init() async {
+    self.player = MusicPlayers.Scriptable(name: .appleMusic)
     await setup()
   }
   
@@ -23,23 +29,31 @@ class MusicInfo {
   }
   
   func getArtist() -> String {
-    return unwrapAsString(trackInfo["trackArtist"])
+    return player?.currentTrack?.artist ?? ""
   }
   
   func getAlbum() -> String {
-    return unwrapAsString(trackInfo["trackAlbum"])
+    return player?.currentTrack?.album ?? ""
   }
   
   func getSong() -> String {
-    return unwrapAsString(trackInfo["trackName"])
+    return player?.currentTrack?.title ?? ""
   }
   
   func getArtwork() -> NSImage? {
-    return bridge?.artwork
+    return ArtworkLoader.default.getArtwork()
   }
   
   func getPlaybackStatus() -> Bool {
-    return (bridge?.playerState ?? .paused) == .playing
+    if let state = player?.playbackState {
+      switch state {
+        case .playing:
+          return true
+      default:
+        return false
+      }
+    }
+    return false
   }
   
   func getData() -> DockData {
@@ -47,20 +61,19 @@ class MusicInfo {
   }
   
   func playPause() {
-    bridge?.playPause()
+    player?.playPause()
   }
   
   func nextTrack() {
-    bridge?.gotoNextTrack()
+    player?.skipToNextItem()
     if !getPlaybackStatus() {
-      bridge?.playPause()
+      player?.playPause()
     }
   }
   
   func fetch() -> DockData {
     getTrackInfo()
     let newData = DockData(artist: getArtist(), album: getAlbum(), song: getSong(), artwork: getArtwork(), playing: getPlaybackStatus())
-    
     self.data.update(other: newData)
     didFetch = true
     return self.data
@@ -84,10 +97,7 @@ class MusicInfo {
   }
   
   private func getTrackInfo() {
-    if let song = bridge?.trackInfo {
-      self.trackInfo = song
-    }
-    print(self.trackInfo)
+    ArtworkLoader.default.fetchArtwork()
   }
 }
 
