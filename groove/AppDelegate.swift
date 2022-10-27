@@ -11,6 +11,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var info: MusicInfo?
   var lastClicked = ProcessInfo.processInfo.systemUptime
   var lastClickType: ClickType = .none
+  var action: MusicInfo.Action = .none
   
   static let DOUBLE_CLICK = 0.3
   static let IGNORE_CLICK = 0.09
@@ -40,16 +41,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let clickTime = now - lastClick
     if clickTime > AppDelegate.IGNORE_CLICK {
       if clickTime <= AppDelegate.DOUBLE_CLICK {
-        self.info?.nextTrack()
+        action = .skip
         self.lastClickType = .double
       } else {
-        self.info?.playPause()
+        action = .playPause
         self.lastClickType = .normal
       }
       print("Type: \(self.lastClickType) Delta: \(clickTime)")
       self.lastClicked = now
     }
-    self.updateTile()
+    
+    Task { [weak self] in
+      do {
+        let action = self?.action ?? .none
+        await self?.info?.perform(action)
+        self?.updateTile()
+      }
+    }
     return true
   }
 

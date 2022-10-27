@@ -1,16 +1,38 @@
-import SwiftUI
 import AppleScriptObjC
 import MusicPlayer
+import SwiftUI
 
 class MusicInfo {
-  
   private var player: MusicPlayers.Scriptable?
   private var data: DockData
+  private var loader: ArtworkLoader
   private var didFetch = false
- 
-  nonisolated init() {
-    self.player = MusicPlayers.Scriptable(name: .appleMusic)
+  private var playing = false
+  private var hasPlayingStatus = false
+  
+  enum Action {
+    case skip, playPause, none
+  }
+  
+  enum PlayerApp: String {
+    case appleMusic = "Music"
+    case spotify = "Spotify"
+    
+    func getInternalPlayer() -> MusicPlayerName {
+      switch self {
+      case .spotify:
+        return .spotify
+      case .appleMusic:
+        return .appleMusic
+      }
+    }
+  }
+   
+  init() {
+    let player = MusicInfo.getPlayer()
     self.data = DockData(artist: "", album: "", song: "", artwork: nil, playing: false)
+    self.player = MusicPlayers.Scriptable(name: player.getInternalPlayer())
+    self.loader = ArtworkLoader(player: player)
   }
   
   private func unwrapAsString(_ value: AnyObject?) -> String {
@@ -18,6 +40,22 @@ class MusicInfo {
       return casted
     }
     return ""
+  }
+  
+  static func getPlayer() -> PlayerApp {
+    return .spotify
+  }
+  
+  func getPlayer() -> PlayerApp {
+    return MusicInfo.getPlayer()
+  }
+  
+  func isSpotify() -> Bool {
+    return getPlayer() == .spotify
+  }
+  
+  func isAppleMusic() -> Bool {
+    return getPlayer() == .appleMusic
   }
   
   func getArtist() -> String {
@@ -33,23 +71,15 @@ class MusicInfo {
   }
   
   func getArtwork() -> NSImage? {
-    return ArtworkLoader.default.getArtwork()
+    return self.loader.getArtwork()
   }
   
   func getPlaybackStatus() -> Bool {
-    if let state = player?.playbackState {
-      switch state {
-        case .playing:
-          return true
-      default:
-        return false
-      }
-    }
-    return false
+    return internalPlaybackStatus()
   }
   
   func getData() -> DockData {
-    return self.data
+    return data
   }
   
   func playPause() {
@@ -58,8 +88,19 @@ class MusicInfo {
   
   func nextTrack() {
     player?.skipToNextItem()
-    if !getPlaybackStatus() {
+    if !getPlaybackStatus() && isAppleMusic() {
       player?.playPause()
+    }
+  }
+  
+  func perform(_ action: Action) async {
+    if action == .playPause {
+      playPause()
+      try? await Task.sleep(nanoseconds: 50_000_000)
+    } else if action == .skip {
+      nextTrack()
+      // Acount for time for Spotify/Apple Music to update
+      try? await Task.sleep(nanoseconds: 100_000_000)
     }
   }
   
@@ -73,16 +114,30 @@ class MusicInfo {
       }
     }
     _ = await task.result
-    return self.data
+    return data
   }
 
   private func getTrackInfo() async {
     do {
-      let loader = ArtworkLoader.default
-      try await loader.getArtworkAsync()
+      try await self.loader.getArtworkAsync()
     } catch {
       print(error)
     }
+    if !hasPlayingStatus {
+      playing = internalPlaybackStatus()
+      hasPlayingStatus = true
+    }
+  }
+  
+  private func internalPlaybackStatus() -> Bool {
+    if let state = player?.playbackState {
+      switch state {
+      case .playing:
+        return true
+      default:
+        return false
+      }
+    }
+    return false
   }
 }
-

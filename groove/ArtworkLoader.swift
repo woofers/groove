@@ -13,11 +13,12 @@ enum ArtworkError: Error {
 }
 
 class ArtworkLoader {
-  static let `default` = ArtworkLoader()
+  private var artwork: NSImage?
+  private let player: MusicInfo.PlayerApp
   
-  var artwork: NSImage?
-  
-  private init() {}
+  init(player: MusicInfo.PlayerApp) {
+    self.player = player
+  }
   
   func getArtwork() -> NSImage? {
     return self.artwork
@@ -36,10 +37,12 @@ class ArtworkLoader {
   @discardableResult
   func getArtworkAsync() async throws -> NSImage {
     let data: NSImage = try await withCheckedThrowingContinuation { continuation in
-      fetchArtworkFromAppleMusic { result in
+      fetchArtwork { result in
+        print(result)
         switch result {
         case .success(let image):
           continuation.resume(returning: image)
+          print("ahh")
           return
         case .failure(let error):
           continuation.resume(throwing: error)
@@ -81,12 +84,22 @@ class ArtworkLoader {
     let code = NSAppleScript.itunesArtwork()
     var error: NSDictionary?
     let script = NSAppleScript(source: code)
+
     if let output = script?.executeAndReturnError(&error) {
+
       if let image = NSImage(data: output.data) {
         completion(.success(image))
         return
       }
     }
     completion(.failure(ArtworkError.noImageData))
+  }
+  
+  private func fetchArtwork(completion: @escaping (Result<NSImage, Error>) -> Void) {
+    if player == .appleMusic {
+      fetchArtworkFromAppleMusic(completion: completion)
+    } else {
+      fetchArtworkFromSpotify(completion: completion)
+    }
   }
 }
