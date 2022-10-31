@@ -23,6 +23,19 @@ class MusicInfo {
 
     static let allCases: [PlayerApp] = [.spotify, .appleMusic]
 
+    func getAppId() -> String {
+      switch self {
+      case .spotify:
+        return "com.spotify.client"
+      case .appleMusic:
+        if #available(OSX 10.15, *) {
+          return "com.apple.Music"
+        } else {
+          return "com.apple.itunes"
+        }
+      }
+    }
+    
     func getInternalPlayer() -> MusicPlayerName {
       switch self {
       case .spotify:
@@ -103,7 +116,7 @@ class MusicInfo {
   }
 
   func getPlayer() -> PlayerApp {
-    return MusicInfo.getPlayer()
+    return name
   }
 
   func isSpotify() -> Bool {
@@ -136,6 +149,10 @@ class MusicInfo {
 
   func getData() -> DockData {
     return data
+  }
+  
+  func isEmpty() -> Bool {
+    return getData().isEmpty()
   }
 
   func playPause() {

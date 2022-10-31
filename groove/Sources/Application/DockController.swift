@@ -39,6 +39,18 @@ class DockController {
   }
 
   func click() {
+    if self.info?.isEmpty() ?? false {
+      if let player = self.info?.getPlayer() {
+        let id = player.getAppId()
+        if let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: id) {
+          DispatchQueue.main.async {
+            NSWorkspace.shared.open(url)
+          }
+        }
+      }
+      return
+    }
+    
     let lastClick = self.lastClicked
     let now = ProcessInfo.processInfo.systemUptime
     let clickTime = now - lastClick

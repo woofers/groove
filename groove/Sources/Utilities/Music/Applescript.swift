@@ -1,17 +1,10 @@
 import SwiftUI
 
 extension NSAppleScript {
-  static var appleMusicName: String {
-    if #available(OSX 10.15, *) {
-      return "com.apple.Music"
-    } else {
-      return "iTunes"
-    }
-  }
 
   static func loadAppleMusicArtwork() -> String {
     return """
-    tell application id "\(appleMusicName)"
+    tell application id "\(MusicInfo.PlayerApp.appleMusic.getAppId())"
       try
         if player state is not stopped then
             set alb to (get album of current track)
