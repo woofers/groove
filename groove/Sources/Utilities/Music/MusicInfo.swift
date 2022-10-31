@@ -76,6 +76,11 @@ class MusicInfo {
                   scheduler: DispatchQueue.main,
                   latest: true)
         .sink { [weak self] event in
+          let next = event.0
+          let state = event.1
+          if (state == .stopped || (next == nil && state == .playing(time: 0))) && (self?.isSpotify() ?? false) {
+            return
+          }
           print(event)
           self?.update()
         }

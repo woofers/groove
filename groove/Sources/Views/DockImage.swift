@@ -16,10 +16,11 @@ struct DockImage: View {
       return NSWorkspace.shared.icon(forFile: url.path)
     }
     if let app = NSRunningApplication.runningApplications(withBundleIdentifier: player.getAppId()).first,
-       let icon = app.icon {
-        return icon
+       let icon = app.icon
+    {
+      return icon
     }
-    return NSImage(systemSymbolName: "rectangle.portrait.and.arrow.right.fill", accessibilityDescription: nil)!
+    return NSImage(named: "AppIcon")!
   }
 
   func getIcon() -> NSImage {
@@ -28,11 +29,11 @@ struct DockImage: View {
     }
     return getFallbackIcon()
   }
-  
+
   func hasInfo() -> Bool {
     return !data.isEmpty()
   }
-  
+
   func hasArtwork() -> Bool {
     return data.artwork != nil
   }
@@ -49,7 +50,7 @@ struct DockImage: View {
                 .resizable()
                 .cornerRadius(16)
                 .shadow(color: .black.opacity(0.36), radius: 1, x: 1, y: 2)
-                DockOverlay().opacity(0.3)
+              DockOverlay().opacity(0.3)
             }
             If(!hasArtwork()) {
               DockOverlay()
