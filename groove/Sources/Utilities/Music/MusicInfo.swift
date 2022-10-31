@@ -81,7 +81,6 @@ class MusicInfo {
           if (state == .stopped || (next == nil && state == .playing(time: 0))) && (self?.isSpotify() ?? false) {
             return
           }
-          print(event)
           self?.update()
         }
         .store(in: &subs)
