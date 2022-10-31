@@ -14,6 +14,7 @@
 		A6A0CC4829104D7100304D28 /* Locale+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A0CC4729104D7100304D28 /* Locale+String.swift */; };
 		A6A0CC4B29104DF000304D28 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6A0CC4D29104DF000304D28 /* Localizable.strings */; };
 		A6A0CC512910888800304D28 /* DSFDockTile in Frameworks */ = {isa = PBXBuildFile; productRef = A6A0CC502910888800304D28 /* DSFDockTile */; };
+		A6A0CC5C29108AB200304D28 /* MusicPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = A6A0CC5B29108AB200304D28 /* MusicPlayer */; };
 		A6B2DFAE2906FFE40010E7AF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFAD2906FFE40010E7AF /* main.swift */; };
 		A6B2DFB0290711F60010E7AF /* MusicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFAF290711F60010E7AF /* MusicInfo.swift */; };
 		A6B2DFB229071D2B0010E7AF /* DockImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFB129071D2B0010E7AF /* DockImage.swift */; };
@@ -60,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6A0CC512910888800304D28 /* DSFDockTile in Frameworks */,
+				A6A0CC5C29108AB200304D28 /* MusicPlayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +194,7 @@
 			name = groove;
 			packageProductDependencies = (
 				A6A0CC502910888800304D28 /* DSFDockTile */,
+				A6A0CC5B29108AB200304D28 /* MusicPlayer */,
 			);
 			productName = groove;
 			productReference = A6F9C9CD290318BF0097514A /* groove.app */;
@@ -224,6 +227,7 @@
 			mainGroup = A6F9C9C4290318BF0097514A;
 			packageReferences = (
 				A6A0CC4F2910888800304D28 /* XCRemoteSwiftPackageReference "DSFDockTile" */,
+				A6A0CC5A29108AB200304D28 /* XCRemoteSwiftPackageReference "MusicPlayer" */,
 			);
 			productRefGroup = A6F9C9CE290318BF0097514A /* Products */;
 			projectDirPath = "";
@@ -513,6 +517,14 @@
 				minimumVersion = 0.7.1;
 			};
 		};
+		A6A0CC5A29108AB200304D28 /* XCRemoteSwiftPackageReference "MusicPlayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ddddxxx/MusicPlayer";
+			requirement = {
+				kind = exactVersion;
+				version = 0.8.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -520,6 +532,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A6A0CC4F2910888800304D28 /* XCRemoteSwiftPackageReference "DSFDockTile" */;
 			productName = DSFDockTile;
+		};
+		A6A0CC5B29108AB200304D28 /* MusicPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A6A0CC5A29108AB200304D28 /* XCRemoteSwiftPackageReference "MusicPlayer" */;
+			productName = MusicPlayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
