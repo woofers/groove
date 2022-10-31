@@ -3,17 +3,26 @@ import SwiftUI
 struct DockImage: View {
   @EnvironmentObject var data: DockData
 
+  func getFallbackIcon() -> NSImage {
+    return NSImage(systemSymbolName: "rectangle.portrait.and.arrow.right.fill", accessibilityDescription: nil)!
+  }
+
+  func getIcon() -> NSImage {
+    if let artwork = data.artwork {
+      return artwork
+    }
+    return getFallbackIcon()
+  }
+
   var body: some View {
     VStack {
       ZStack {
-        OptionalView(data.artwork) { artwork in
-          Image(nsImage: artwork)
-            .interpolation(.high)
-            .antialiased(true)
-            .resizable()
-            .cornerRadius(16)
-            .shadow(color: .black.opacity(0.36), radius: 1, x: 1, y: 2)
-        }
+        Image(nsImage: getIcon())
+          .interpolation(.high)
+          .antialiased(true)
+          .resizable()
+          .cornerRadius(16)
+          .shadow(color: .black.opacity(0.36), radius: 1, x: 1, y: 2)
         RoundedRectangle(cornerRadius: 16)
           .fill(.black)
           .opacity(0.3)

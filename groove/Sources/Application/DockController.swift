@@ -55,4 +55,12 @@ class DockController {
     }
     self.info?.perform(action)
   }
+  
+  func playPause() {
+    self.info?.perform(.playPause)
+  }
+  
+  func getData() -> DockData? {
+    return self.info?.getData()
+  }
 }

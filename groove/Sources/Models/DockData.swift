@@ -13,6 +13,11 @@ class DockData: ObservableObject, Identifiable {
     }
   }
   
+  public var description: String {
+    if isEmpty() { return "No track playing" }
+    return "\(song) - \(artist) - \(album)"
+  }
+  
   init(artist: String, album: String, song: String, artwork: NSImage? = nil, playing: Bool) {
     self.artist = artist
     self.album = album
@@ -37,5 +42,9 @@ class DockData: ObservableObject, Identifiable {
     let artwork = self.artwork?.isEqual(to: other.artwork) ?? true
     let playing = self.playing == other.playing
     return artist && album && song && artwork && playing
+  }
+  
+  func isEmpty() -> Bool {
+    return !playing && song == ""
   }
 }

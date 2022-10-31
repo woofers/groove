@@ -11,6 +11,10 @@
 		A6685A48290B14D700D70B02 /* MusicPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = A6685A47290B14D700D70B02 /* MusicPlayer */; };
 		A6685A4C290B2E4F00D70B02 /* Applescript.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6685A4B290B2E4F00D70B02 /* Applescript.swift */; };
 		A6685A4E290B327600D70B02 /* ArtworkLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6685A4D290B327600D70B02 /* ArtworkLoader.swift */; };
+		A6A0CC4429104AE900304D28 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A0CC4329104AE900304D28 /* AppSettings.swift */; };
+		A6A0CC4629104B4600304D28 /* DefaultValues.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6A0CC4529104B4600304D28 /* DefaultValues.plist */; };
+		A6A0CC4829104D7100304D28 /* Locale+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A0CC4729104D7100304D28 /* Locale+String.swift */; };
+		A6A0CC4B29104DF000304D28 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6A0CC4D29104DF000304D28 /* Localizable.strings */; };
 		A6B2DFAE2906FFE40010E7AF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFAD2906FFE40010E7AF /* main.swift */; };
 		A6B2DFB0290711F60010E7AF /* MusicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFAF290711F60010E7AF /* MusicInfo.swift */; };
 		A6B2DFB229071D2B0010E7AF /* DockImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2DFB129071D2B0010E7AF /* DockImage.swift */; };
@@ -29,6 +33,11 @@
 /* Begin PBXFileReference section */
 		A6685A4B290B2E4F00D70B02 /* Applescript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Applescript.swift; sourceTree = "<group>"; };
 		A6685A4D290B327600D70B02 /* ArtworkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkLoader.swift; sourceTree = "<group>"; };
+		A6A0CC4329104AE900304D28 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		A6A0CC4529104B4600304D28 /* DefaultValues.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultValues.plist; sourceTree = "<group>"; };
+		A6A0CC4729104D7100304D28 /* Locale+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+String.swift"; sourceTree = "<group>"; };
+		A6A0CC4C29104DF000304D28 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A6A0CC4E29104DF300304D28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A6B2DFAD2906FFE40010E7AF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A6B2DFAF290711F60010E7AF /* MusicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicInfo.swift; sourceTree = "<group>"; };
 		A6B2DFB129071D2B0010E7AF /* DockImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockImage.swift; sourceTree = "<group>"; };
@@ -108,6 +117,8 @@
 		A6A0CC412910406000304D28 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A6A0CC4729104D7100304D28 /* Locale+String.swift */,
+				A6A0CC4329104AE900304D28 /* AppSettings.swift */,
 				A6A0CC402910405100304D28 /* Music */,
 				A6B2DFBD290734880010E7AF /* FileManager.swift */,
 			);
@@ -146,7 +157,9 @@
 			isa = PBXGroup;
 			children = (
 				A6F9C9E129031B520097514A /* Info.plist */,
+				A6A0CC4529104B4600304D28 /* DefaultValues.plist */,
 				A6B2DFC629073E000010E7AF /* InfoPlist.strings */,
+				A6A0CC4D29104DF000304D28 /* Localizable.strings */,
 				A6B2DFAD2906FFE40010E7AF /* main.swift */,
 				A6A0CC42291040FE00304D28 /* Sources */,
 				A6F9C9D4290318C00097514A /* Assets.xcassets */,
@@ -233,8 +246,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6A0CC4B29104DF000304D28 /* Localizable.strings in Resources */,
 				A6F9C9D8290318C00097514A /* Preview Assets.xcassets in Resources */,
 				A6B2DFC429073E000010E7AF /* InfoPlist.strings in Resources */,
+				A6A0CC4629104B4600304D28 /* DefaultValues.plist in Resources */,
 				A6F9C9D5290318C00097514A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,6 +262,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6B2DFB229071D2B0010E7AF /* DockImage.swift in Sources */,
+				A6A0CC4429104AE900304D28 /* AppSettings.swift in Sources */,
+				A6A0CC4829104D7100304D28 /* Locale+String.swift in Sources */,
 				A6B2DFAE2906FFE40010E7AF /* main.swift in Sources */,
 				A6B2DFBE290734890010E7AF /* FileManager.swift in Sources */,
 				A6F9C9D1290318BF0097514A /* AppDelegate.swift in Sources */,
@@ -263,6 +280,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A6A0CC4D29104DF000304D28 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A6A0CC4C29104DF000304D28 /* fr */,
+				A6A0CC4E29104DF300304D28 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		A6B2DFC629073E000010E7AF /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

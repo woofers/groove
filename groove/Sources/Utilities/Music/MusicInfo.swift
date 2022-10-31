@@ -18,6 +18,8 @@ class MusicInfo {
   enum PlayerApp: String {
     case appleMusic = "Music"
     case spotify = "Spotify"
+    
+    static let allCases: [PlayerApp] = [.spotify, .appleMusic]
 
     func getInternalPlayer() -> MusicPlayerName {
       switch self {
