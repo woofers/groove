@@ -1,7 +1,7 @@
 import SwiftUI
 
 class PlayerMenuItem: NSMenuItem {
-  var player: MusicInfo.PlayerApp = .spotify
+  var player: MusicInfo.PlayerApp?
 
   override init(title string: String, action selector: Selector?, keyEquivalent charCode: String) {
     super.init(title: string, action: selector, keyEquivalent: charCode)
@@ -60,9 +60,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       let current = $0
       let title = current.rawValue
       let player = PlayerMenuItem()
-      player.state = AppSettings.default.player() == current ? .on : .off
+      let isCurrent = AppSettings.default.player() == current
+      player.state = isCurrent ? .on : .off
       player.image = NSImage(systemSymbolName: "checkmark", accessibilityDescription: nil)
-      player.setPlayer($0)
+      if !isCurrent { player.setPlayer($0) }
       player.title = "\(title)"~
       player.action = #selector(self.changePlayer(sender:))
       player.target = self
@@ -75,8 +76,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   
   @objc func changePlayer(sender: Any) {
     if let item = sender as? PlayerMenuItem {
-      print(item.player)
-      AppSettings.default.setPlayer(item.player)
+      if let player = item.player {
+        AppSettings.default.setPlayer(player)
+      }
     }
   }
   

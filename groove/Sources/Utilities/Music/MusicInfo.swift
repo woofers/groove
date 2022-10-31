@@ -3,10 +3,12 @@ import MusicPlayer
 import SwiftUI
 
 class MusicInfo {
-  private var player: MusicPlayers.Scriptable?
+  private var name: PlayerApp
   private var data: DockData
-  private var loader: ArtworkLoader
-  private var didFetch = false
+  
+  private var player: MusicPlayers.Scriptable?
+  private var loader: ArtworkLoader?
+  
   private var updateView: () -> Void
 
   private var subs = Set<AnyCancellable>()
@@ -44,10 +46,17 @@ class MusicInfo {
 
   init(_ updateView: @escaping () -> Void) {
     let player = MusicInfo.getPlayer()
+    self.name = player
     self.data = DockData(artist: "", album: "", song: "", artwork: nil, playing: false)
-    self.player = MusicPlayers.Scriptable(name: player.getInternalPlayer())
-    self.loader = ArtworkLoader(player: player)
     self.updateView = updateView
+    NotificationCenter.default.addObserver(self, selector: #selector(userDefaultsDidChange), name: UserDefaults.didChangeNotification, object: nil)
+    setUpPlayer()
+  }
+  
+  private func setUpPlayer() {
+    self.player = MusicPlayers.Scriptable(name: name.getInternalPlayer())
+    self.loader = ArtworkLoader(player: name)
+    
     if let controller = self.player {
       Publishers.CombineLatest(controller.currentTrackWillChange, controller.playbackStateWillChange)
         .throttle(for: .milliseconds(200),
@@ -60,6 +69,20 @@ class MusicInfo {
         .store(in: &subs)
     }
   }
+  
+  private func tearDownPlayer() {
+    for sub in subs { sub.cancel() }
+  }
+  
+  private func resetPlayer() {
+    tearDownPlayer()
+    setUpPlayer()
+  }
+  
+  @objc func userDefaultsDidChange(_ notification: Notification) {
+    self.name = AppSettings.default.player()
+    resetPlayer()
+  }
 
   func update() {
     Task { [weak self] in
@@ -71,7 +94,8 @@ class MusicInfo {
   }
 
   func destroy() {
-    for sub in subs { sub.cancel() }
+    tearDownPlayer()
+    NotificationCenter.default.removeObserver(self, name: UserDefaults.didChangeNotification, object: nil)
   }
 
   static func getPlayer() -> PlayerApp {
@@ -103,7 +127,7 @@ class MusicInfo {
   }
 
   func getArtwork() -> NSImage? {
-    return loader.getArtwork()
+    return loader?.getArtwork()
   }
 
   func getPlaybackStatus() -> Bool {
@@ -140,7 +164,6 @@ class MusicInfo {
         await getTrackInfo()
         let newData = DockData(artist: getArtist(), album: getAlbum(), song: getSong(), artwork: getArtwork(), playing: getPlaybackStatus())
         await self.data.update(other: newData)
-        didFetch = true
       }
     }
     _ = await task.result
@@ -154,7 +177,7 @@ class MusicInfo {
 
   private func getTrackInfo() async {
     do {
-      try await loader.getArtworkAsync()
+      try await loader?.getArtworkAsync()
     } catch {
       print(error)
     }
