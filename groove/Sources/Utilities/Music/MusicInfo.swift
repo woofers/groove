@@ -1,14 +1,45 @@
 import Combine
-import MusicPlayer
+// import MusicPlayer
 import SwiftUI
+
+enum MusicPlayerName {
+  case appleMusic, spotify
+}
+
+enum State {
+  case playing, paused
+}
+
+enum MusicPlayers {
+  class Track {
+    var album: String?
+    var artist: String?
+    var title: String?
+
+    init() {}
+  }
+
+  class Scriptable {
+    var currentTrack: Track?
+    var playbackState: State
+
+    init(name: MusicPlayerName) {
+      self.playbackState = .playing
+    }
+
+    func playPause() {}
+
+    func skipToNextItem() {}
+  }
+}
 
 class MusicInfo {
   private var name: PlayerApp
   private var data: DockData
-  
+
   private var player: MusicPlayers.Scriptable?
   private var loader: ArtworkLoader?
-  
+
   private var updateView: () -> Void
 
   private var subs = Set<AnyCancellable>()
@@ -35,7 +66,7 @@ class MusicInfo {
         }
       }
     }
-    
+
     func getInternalPlayer() -> MusicPlayerName {
       switch self {
       case .spotify:
@@ -65,39 +96,40 @@ class MusicInfo {
     NotificationCenter.default.addObserver(self, selector: #selector(userDefaultsDidChange), name: UserDefaults.didChangeNotification, object: nil)
     setUpPlayer()
   }
-  
+
   private func setUpPlayer() {
-    self.player = MusicPlayers.Scriptable(name: name.getInternalPlayer())
-    self.loader = ArtworkLoader(player: name)
-    
-    if let controller = self.player {
-      Publishers.CombineLatest(controller.currentTrackWillChange, controller.playbackStateWillChange)
-        .throttle(for: .milliseconds(200),
-                  scheduler: DispatchQueue.main,
-                  latest: true)
-        .sink { [weak self] event in
-          let next = event.0
-          let state = event.1
-          if (state == .stopped || (next == nil && state == .playing(time: 0))) && (self?.isSpotify() ?? false) {
-            return
-          }
-          self?.update()
-        }
-        .store(in: &subs)
-    }
+    player = MusicPlayers.Scriptable(name: name.getInternalPlayer())
+    loader = ArtworkLoader(player: name)
+    /*
+     if let controller = self.player {
+       Publishers.CombineLatest(controller.currentTrackWillChange, controller.playbackStateWillChange)
+         .throttle(for: .milliseconds(200),
+                   scheduler: DispatchQueue.main,
+                   latest: true)
+         .sink { [weak self] event in
+           let next = event.0
+           let state = event.1
+           if (state == .stopped || (next == nil && state == .playing(time: 0))) && (self?.isSpotify() ?? false) {
+             return
+           }
+           self?.update()
+         }
+         .store(in: &subs)
+     }
+      */
   }
-  
+
   private func tearDownPlayer() {
     for sub in subs { sub.cancel() }
   }
-  
+
   private func resetPlayer() {
     tearDownPlayer()
     setUpPlayer()
   }
-  
+
   @objc func userDefaultsDidChange(_ notification: Notification) {
-    self.name = AppSettings.default.player()
+    name = AppSettings.default.player()
     resetPlayer()
   }
 
@@ -154,7 +186,7 @@ class MusicInfo {
   func getData() -> DockData {
     return data
   }
-  
+
   func isEmpty() -> Bool {
     return getData().isEmpty()
   }
