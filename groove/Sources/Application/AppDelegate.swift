@@ -1,5 +1,21 @@
 import SwiftUI
 
+class PlayerMenuItem: NSMenuItem {
+  var player: MusicInfo.PlayerApp = .spotify
+
+  override init(title string: String, action selector: Selector?, keyEquivalent charCode: String) {
+    super.init(title: string, action: selector, keyEquivalent: charCode)
+  }
+  
+  required init(coder: NSCoder) {
+    super.init(coder: coder)
+  }
+  
+  func setPlayer(_ player: MusicInfo.PlayerApp) {
+    self.player = player
+  }
+}
+
 class AppDelegate: NSObject, NSApplicationDelegate {
   var dockController: DockController?
 
@@ -41,10 +57,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let label = NSMenuItem()
     label.title = "Music Player"~
     let players = MusicInfo.PlayerApp.allCases.map {
-      let title = $0.rawValue
-      let player = NSMenuItem()
+      let current = $0
+      let title = current.rawValue
+      let player = PlayerMenuItem()
+      player.state = AppSettings.default.player() == current ? .on : .off
+      player.image = NSImage(systemSymbolName: "checkmark", accessibilityDescription: nil)
+      player.setPlayer($0)
       player.title = "\(title)"~
-      player.action = #selector(open)
+      player.action = #selector(self.changePlayer(sender:))
       player.target = self
       player.indentationLevel = 1
       return player
@@ -53,8 +73,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     return menu
   }
   
-  @objc func open() {
-    
+  @objc func changePlayer(sender: Any) {
+    if let item = sender as? PlayerMenuItem {
+      print(item.player)
+      AppSettings.default.setPlayer(item.player)
+    }
   }
   
   @objc func playPause() {

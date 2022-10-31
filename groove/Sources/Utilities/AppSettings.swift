@@ -5,11 +5,19 @@ class AppSettings {
   
   private init() {}
   
-  static func player() -> String? {
-    UserDefaults.standard.string(forKey: "player")
+  private func playerString() -> String {
+    UserDefaults.standard.string(forKey: "player") ?? ""
   }
   
-  static func resetSettings() {
+  func player() -> MusicInfo.PlayerApp {
+    MusicInfo.PlayerApp.from(playerString())
+  }
+  
+  func setPlayer(_ player: MusicInfo.PlayerApp) {
+    UserDefaults.standard.set(player.rawValue, forKey: "player")
+  }
+  
+  func resetSettings() {
     let domain = Bundle.main.bundleIdentifier
     guard let id = domain else { return }
     UserDefaults.standard.removePersistentDomain(forName: id)

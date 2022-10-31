@@ -18,7 +18,7 @@ class MusicInfo {
   enum PlayerApp: String {
     case appleMusic = "Music"
     case spotify = "Spotify"
-    
+
     static let allCases: [PlayerApp] = [.spotify, .appleMusic]
 
     func getInternalPlayer() -> MusicPlayerName {
@@ -27,6 +27,17 @@ class MusicInfo {
         return .spotify
       case .appleMusic:
         return .appleMusic
+      }
+    }
+
+    static func from(_ value: String) -> PlayerApp {
+      switch value {
+      case spotify.rawValue:
+        return .spotify
+      case appleMusic.rawValue:
+        return .appleMusic
+      default:
+        return .spotify
       }
     }
   }
@@ -49,7 +60,7 @@ class MusicInfo {
         .store(in: &subs)
     }
   }
-  
+
   func update() {
     Task { [weak self] in
       do {
@@ -58,13 +69,13 @@ class MusicInfo {
       }
     }
   }
-  
+
   func destroy() {
     for sub in subs { sub.cancel() }
   }
 
   static func getPlayer() -> PlayerApp {
-    return .spotify
+    return AppSettings.default.player()
   }
 
   func getPlayer() -> PlayerApp {
