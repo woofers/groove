@@ -50,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ddddxxx/MusicPlayer",
       "state" : {
-        "branch" : "master",
-        "revision" : "6eee88b4800bba1cc03b2a233fe858ccca7c9862"
+        "revision" : "50904bac7aec79c5842f2ec3d1a1d858496dd6fe",
+        "version" : "0.8.2"
       }
     }
   ],
