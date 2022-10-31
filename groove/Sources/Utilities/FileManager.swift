@@ -1,5 +1,4 @@
 import SwiftUI
-import AnyCodable
 
 extension URL {
   func append(path: String, isDirectory: Bool) -> URL {

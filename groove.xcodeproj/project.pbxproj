@@ -66,6 +66,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A6A0CC3729103E9D00304D28 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A6B2DFB329071D450010E7AF /* DockData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A6A0CC3A29103ED400304D28 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A6B2DFB929071FAE0010E7AF /* OptionalView.swift */,
+				A6B2DFB129071D2B0010E7AF /* DockImage.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A6A0CC3C29103EF800304D28 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				A6B2DFB529071D660010E7AF /* DockViewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		A6A0CC3D29103F1600304D28 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A6F9C9D0290318BF0097514A /* AppDelegate.swift */,
+				A6B2DFB729071D970010E7AF /* DockController.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		A6A0CC402910405100304D28 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				A6685A4B290B2E4F00D70B02 /* Applescript.swift */,
+				A6B2DFAF290711F60010E7AF /* MusicInfo.swift */,
+				A6685A4D290B327600D70B02 /* ArtworkLoader.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		A6A0CC412910406000304D28 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A6A0CC402910405100304D28 /* Music */,
+				A6B2DFBD290734880010E7AF /* FileManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A6A0CC42291040FE00304D28 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A6A0CC3D29103F1600304D28 /* Application */,
+				A6A0CC3729103E9D00304D28 /* Models */,
+				A6A0CC3C29103EF800304D28 /* Screens */,
+				A6A0CC3A29103ED400304D28 /* Views */,
+				A6A0CC412910406000304D28 /* Utilities */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		A6F9C9C4290318BF0097514A = {
 			isa = PBXGroup;
 			children = (
@@ -89,16 +154,7 @@
 				A6F9C9E129031B520097514A /* Info.plist */,
 				A6B2DFC629073E000010E7AF /* InfoPlist.strings */,
 				A6B2DFAD2906FFE40010E7AF /* main.swift */,
-				A6685A4B290B2E4F00D70B02 /* Applescript.swift */,
-				A6B2DFBD290734880010E7AF /* FileManager.swift */,
-				A6F9C9D0290318BF0097514A /* AppDelegate.swift */,
-				A6B2DFB929071FAE0010E7AF /* OptionalView.swift */,
-				A6B2DFB729071D970010E7AF /* DockController.swift */,
-				A6B2DFB529071D660010E7AF /* DockViewController.swift */,
-				A6B2DFB329071D450010E7AF /* DockData.swift */,
-				A6B2DFB129071D2B0010E7AF /* DockImage.swift */,
-				A6B2DFAF290711F60010E7AF /* MusicInfo.swift */,
-				A6685A4D290B327600D70B02 /* ArtworkLoader.swift */,
+				A6A0CC42291040FE00304D28 /* Sources */,
 				A6F9C9D4290318C00097514A /* Assets.xcassets */,
 				A6F9C9CE290318BF0097514A /* Products */,
 				A6F9C9D9290318C00097514A /* groove.entitlements */,

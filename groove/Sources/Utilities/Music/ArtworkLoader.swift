@@ -1,10 +1,3 @@
-//
-//  ArtworkLoader.swift
-//  groove
-//
-//  Created by Jaxson Van Doorn on 2022-10-27.
-//
-
 import SwiftUI
 
 enum ArtworkError: Error {
@@ -23,7 +16,6 @@ class ArtworkLoader {
   func getArtwork() -> NSImage? {
     return self.artwork
   }
-  
  
   @discardableResult
   func getArtworkAsync() async throws -> NSImage {

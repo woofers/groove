@@ -4,7 +4,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var dockController: DockController?
 
   func applicationDidBecomeActive(_: Notification) {
-
+    
   }
 
   func applicationShouldHandleReopen(_: NSApplication, hasVisibleWindows _: Bool) -> Bool {
