@@ -7,11 +7,11 @@
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>Need to get some cool music</string>
+	<string>Groove needs access to your music library.</string>
 	<key>LSHasLocalizedDisplayName</key>
 	<true/>
 	<key>kTCCServiceMediaLibrary</key>
-	<string>Orbital needs access to open pinned dock items from that folder.</string>
+	<string>Groove needs access to your music library.</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>11</string>
 	<key>NSHumanReadableCopyright</key>
@@ -25,6 +25,6 @@
 	<key>LSUIElement</key>
 	<false/>
 	<key>NSAppleEventsUsageDescription</key>
-	<string>Demonstrates how to control an “AppleScriptable” application from Swift via AppleScript-ObjC. </string>
+	<string>Groove needs access to send AppleEvents to Spotify and Apple Music.</string>
 </dict>
 </plist>
