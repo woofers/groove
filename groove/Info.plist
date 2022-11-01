@@ -2,29 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDisplayName</key>
-	<string>${PRODUCT_NAME}</string>
-	<key>CFBundleName</key>
-	<string>${PRODUCT_NAME}</string>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>Groove needs access to your music library.</string>
 	<key>LSHasLocalizedDisplayName</key>
 	<true/>
-	<key>kTCCServiceMediaLibrary</key>
-	<string>Groove needs access to your music library.</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>11</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>© Jaxson Van Doorn 2022. All Rights Reserved.</string>
-	<key>LSApplicationCategoryType</key>
-	<string>public.app-category.productivity</string>
 	<key>NSSupportsAutomaticTermination</key>
 	<false/>
 	<key>NSSupportsSuddenTermination</key>
 	<false/>
-	<key>LSUIElement</key>
-	<false/>
-	<key>NSAppleEventsUsageDescription</key>
-	<string>Groove needs access to send AppleEvents to Spotify and Apple Music.</string>
+	<key>kTCCServiceMediaLibrary</key>
+	<string>Groove needs access to your music library.</string>
 </dict>
 </plist>

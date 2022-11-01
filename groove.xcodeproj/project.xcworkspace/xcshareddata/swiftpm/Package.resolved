@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/dagronf/DSFDockTile",
       "state" : {
-        "revision" : "5d34a5ef6941d7a11209564668ed335dfcec4df8",
-        "version" : "0.7.1"
+        "branch" : "main",
+        "revision" : "5d34a5ef6941d7a11209564668ed335dfcec4df8"
       }
     },
     {
