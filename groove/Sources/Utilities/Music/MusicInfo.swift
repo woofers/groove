@@ -184,7 +184,9 @@ class MusicInfo {
       do {
         await getTrackInfo()
         let newData = DockData(artist: getArtist(), album: getAlbum(), song: getSong(), artwork: getArtwork(), playing: getPlaybackStatus())
-        await self.data.update(other: newData)
+        if !isAppleMusic() || newData.song != "Connecting…" {
+          await self.data.update(other: newData)
+        }
       }
     }
     _ = await task.result
