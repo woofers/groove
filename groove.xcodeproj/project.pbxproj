@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A639F7A3291301F7009965A4 /* DockMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A639F7A2291301F7009965A4 /* DockMenuController.swift */; };
 		A69F7A62291097B400042243 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A69F7A61291097B400042243 /* Preview Assets.xcassets */; };
 		A69F7A7C291097E000042243 /* DockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69F7A6B291097E000042243 /* DockData.swift */; };
 		A69F7A7D291097E000042243 /* DockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69F7A6D291097E000042243 /* DockViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A639F7A2291301F7009965A4 /* DockMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockMenuController.swift; sourceTree = "<group>"; };
 		A69F7A57291097B300042243 /* groove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = groove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A69F7A61291097B400042243 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A69F7A63291097B400042243 /* groove.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = groove.entitlements; sourceTree = "<group>"; };
@@ -133,6 +135,8 @@
 		A69F7A6C291097E000042243 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				A69F7A78291097E000042243 /* DockController.swift */,
+				A639F7A2291301F7009965A4 /* DockMenuController.swift */,
 				A69F7A6D291097E000042243 /* DockViewController.swift */,
 			);
 			path = Screens;
@@ -163,7 +167,6 @@
 			isa = PBXGroup;
 			children = (
 				A69F7A77291097E000042243 /* AppDelegate.swift */,
-				A69F7A78291097E000042243 /* DockController.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				A69F7A85291097E000042243 /* DockController.swift in Sources */,
 				A69F7A982910981900042243 /* main.swift in Sources */,
 				A69F7A81291097E000042243 /* AppSettings.swift in Sources */,
+				A639F7A3291301F7009965A4 /* DockMenuController.swift in Sources */,
 				A69F7A7D291097E000042243 /* DockViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
