@@ -1,4 +1,3 @@
-import DSFDockTile
 import SwiftUI
 
 enum ClickType {
@@ -14,9 +13,9 @@ class DockController {
   static let DOUBLE_CLICK = 0.3
   static let IGNORE_CLICK = 0.09
   
-  lazy var updateDockTile: DSFDockTile.View = {
+  lazy var updateDockTile: DockTileView = {
     dockViewController.loadView()
-    return DSFDockTile.View(dockViewController)
+    return DockTileView(dockViewController)
   }()
 
   init() {

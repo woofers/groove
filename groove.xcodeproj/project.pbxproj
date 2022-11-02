@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A639F7A3291301F7009965A4 /* DockMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A639F7A2291301F7009965A4 /* DockMenuController.swift */; };
+		A639F7AF29131EAD009965A4 /* DockTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A639F7AE29131EAD009965A4 /* DockTileView.swift */; };
 		A69F7A62291097B400042243 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A69F7A61291097B400042243 /* Preview Assets.xcassets */; };
 		A69F7A7C291097E000042243 /* DockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69F7A6B291097E000042243 /* DockData.swift */; };
 		A69F7A7D291097E000042243 /* DockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69F7A6D291097E000042243 /* DockViewController.swift */; };
@@ -27,7 +28,6 @@
 		A69F7A9A2910981900042243 /* DefaultValues.plist in Resources */ = {isa = PBXBuildFile; fileRef = A69F7A902910981900042243 /* DefaultValues.plist */; };
 		A69F7A9B2910981900042243 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A69F7A922910981900042243 /* Localizable.strings */; };
 		A69F7A9C2910981900042243 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A69F7A942910981900042243 /* InfoPlist.strings */; };
-		A69F7A9F2910985B00042243 /* DSFDockTile in Frameworks */ = {isa = PBXBuildFile; productRef = A69F7A9E2910985B00042243 /* DSFDockTile */; };
 		A69F7AA5291098FA00042243 /* LXMusicPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = A69F7AA4291098FA00042243 /* LXMusicPlayer */; };
 		A69F7AA7291098FA00042243 /* MusicPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = A69F7AA6291098FA00042243 /* MusicPlayer */; };
 		A69F7AA929109A8C00042243 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A69F7AA829109A8C00042243 /* Assets.xcassets */; };
@@ -35,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		A639F7A2291301F7009965A4 /* DockMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockMenuController.swift; sourceTree = "<group>"; };
+		A639F7AE29131EAD009965A4 /* DockTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockTileView.swift; sourceTree = "<group>"; };
 		A69F7A57291097B300042243 /* groove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = groove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A69F7A61291097B400042243 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A69F7A63291097B400042243 /* groove.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = groove.entitlements; sourceTree = "<group>"; };
@@ -64,7 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A69F7A9F2910985B00042243 /* DSFDockTile in Frameworks */,
 				A69F7AA5291098FA00042243 /* LXMusicPlayer in Frameworks */,
 				A69F7AA7291098FA00042243 /* MusicPlayer in Frameworks */,
 			);
@@ -136,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				A69F7A78291097E000042243 /* DockController.swift */,
+				A639F7AE29131EAD009965A4 /* DockTileView.swift */,
 				A639F7A2291301F7009965A4 /* DockMenuController.swift */,
 				A69F7A6D291097E000042243 /* DockViewController.swift */,
 			);
@@ -215,7 +216,6 @@
 			);
 			name = groove;
 			packageProductDependencies = (
-				A69F7A9E2910985B00042243 /* DSFDockTile */,
 				A69F7AA4291098FA00042243 /* LXMusicPlayer */,
 				A69F7AA6291098FA00042243 /* MusicPlayer */,
 			);
@@ -249,7 +249,6 @@
 			);
 			mainGroup = A69F7A4E291097B300042243;
 			packageReferences = (
-				A69F7A9D2910985B00042243 /* XCRemoteSwiftPackageReference "DSFDockTile" */,
 				A69F7AA3291098FA00042243 /* XCRemoteSwiftPackageReference "MusicPlayer" */,
 			);
 			productRefGroup = A69F7A58291097B300042243 /* Products */;
@@ -294,6 +293,7 @@
 				A69F7A7E291097E000042243 /* Applescript.swift in Sources */,
 				A69F7A85291097E000042243 /* DockController.swift in Sources */,
 				A69F7A982910981900042243 /* main.swift in Sources */,
+				A639F7AF29131EAD009965A4 /* DockTileView.swift in Sources */,
 				A69F7A81291097E000042243 /* AppSettings.swift in Sources */,
 				A639F7A3291301F7009965A4 /* DockMenuController.swift in Sources */,
 				A69F7A7D291097E000042243 /* DockViewController.swift in Sources */,
@@ -552,14 +552,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A69F7A9D2910985B00042243 /* XCRemoteSwiftPackageReference "DSFDockTile" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dagronf/DSFDockTile";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		A69F7AA3291098FA00042243 /* XCRemoteSwiftPackageReference "MusicPlayer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ddddxxx/MusicPlayer";
@@ -571,11 +563,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A69F7A9E2910985B00042243 /* DSFDockTile */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A69F7A9D2910985B00042243 /* XCRemoteSwiftPackageReference "DSFDockTile" */;
-			productName = DSFDockTile;
-		};
 		A69F7AA4291098FA00042243 /* LXMusicPlayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A69F7AA3291098FA00042243 /* XCRemoteSwiftPackageReference "MusicPlayer" */;
