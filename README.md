@@ -27,6 +27,8 @@ To choose which music player to use,
 right click on the Groove dock tile
 and switch between Apple Music and Spotify.
 
+![Right click of Groove app showing how to change between Apple Music and Spotify](./screenshots/config.png)
+
 ## Libraries
 
 Groove makes use of the following libraries:
