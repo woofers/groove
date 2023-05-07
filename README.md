@@ -2,7 +2,7 @@
 
 # Groove.app
 
-<img src="./screenshots/appicon.png" alt="Groove App Icon" style="max-width: 100%;" width="92px"/>
+<img src="./screenshots/appicon.png" alt="Groove App Icon" width="92px"/>
 
 Display live track info from Spotify and Apple Music in your dock.
 
